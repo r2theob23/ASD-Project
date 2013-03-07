@@ -4,3 +4,16 @@ ASD 1303
 stlyes.css
 */
 
+.ui-grid-a {
+	position: relative;
+	top: 5px;
+}
+.ui-block-b {
+	position: relative;
+	bottom: 15px;
+}
+
+#buttons {
+	position: relative;
+	bottom: 70px;
+}
