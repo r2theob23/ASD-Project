@@ -3,17 +3,20 @@ Robert Smith
 ASD 1303
 stlyes.css
 */
-
 .ui-grid-a {
 	position: relative;
 	top: 5px;
 }
-.ui-block-b {
+.ui-block-a {
 	position: relative;
-	bottom: 15px;
+	top: 10px;
 }
 
 #buttons {
 	position: relative;
 	bottom: 70px;
+}
+#nav1 {
+	position: relative;
+	bottom: 10px;
 }
