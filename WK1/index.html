@@ -27,7 +27,6 @@
 </head>
 <body>
 	<!-- Home Screen -->
-	!-- Home Page -->
 	<section data-role="page" id="home" data-theme="a">
 
 		<header data-role="header" data-postion="fixed" data-theme="c" >
@@ -41,18 +40,18 @@
 			</div>
 			<div id="buttons">
 				<ul data-role="listview" data-theme="e">
-					<li>
+					<li id="addButton">
 						<a href="#addData">
 							<img src="images/addProject.png"/>
-							<h3>Add An Assignment</h3>
-							<p>Add a New Assignment or Test<p>
+							<h3>Add Project</h3>
+							<p>Add a New Project<p>
 						</a>
 					</li>
-					<li>
+					<li id="browseButton">
 						<a href="#viewData">
 							<img src="images/browseProjects.png"/>
-							<h3>Browse Saved Assignments</h3>
-							<p>Review Previously Saved Assignments or Tests<p>
+							<h3>Browse Projects</h3>
+							<p>Review & Edit Saved Projects<p>
 						</a>
 					</li>
 				</ul>
@@ -62,7 +61,7 @@
 		<footer data-role="footer" data-position="fixed"data-theme="c" >
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#home" data-icon="home" class="ui-btn-active" id="nav1">Home</a></li>
+					<li><a href="#home" data-icon="home" class="ui-btn-active ui-state-persist" id="nav1">Home</a></li>
 					<li><a href="#addData" data-icon="testData">Add</a></li>
 					<li><a href="#viewData" data-icon="search">Search</a></li>
 				</ul>
@@ -73,7 +72,7 @@
 	<!-- End Home Screen-->
 	<!-- Add Assignment Screen-->
 	<section data-role="page" id="addData" data-add-back-btn="true" data-theme="a">
-		<header data-role="header" data-theme="e">
+		<header data-role="header" data-theme="c">
 			<h1>Add Assignment</h1>
 		</header>
 		<div data-role="content">
@@ -187,8 +186,8 @@
 		<footer data-role="footer" data-position="fixed" data-theme="c">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#home" data-icon="home">Home</a></li>
-					<li><a href="#addData" data-icon="testData" class="ui-btn-active">Add</a></li>
+					<li><a href="#home" data-icon="home" id="nav2">Home</a></li>
+					<li><a href="#addData" data-icon="testData" class="ui-btn-active ui-state-persist">Add</a></li>
 					<li><a href="#viewData" data-icon="search">Search</a></li>
 				</ul>
 			</div>
@@ -197,7 +196,7 @@
 	<!-- END FORM SCREEN -->
 	<!-- START VIEW DATA SCREEN -->
 	<section data-role="page" id="viewData" data-add-back-btn="true" data-theme="a">
-		<header data-role="header" data-theme="e">
+		<header data-role="header" data-theme="c">
 			<h1>Assignments</h1>
 		</header>
 
@@ -205,9 +204,9 @@
 		<footer data-role="footer" data-position="fixed" data-theme="c">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#home" data-icon="home" id="nav3">Home</a></li>
 					<li><a href="#addData" data-icon="testData">Add</a></li>
-					<li><a href="#viewData" data-icon="search" class="ui-btn-active">Search</a></li>
+					<li><a href="#viewData" data-icon="search" class="ui-btn-active ui-state-persist">Search</a></li>
 				</ul>
 			</div>
 		</footer>

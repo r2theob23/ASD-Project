@@ -14,9 +14,25 @@ stlyes.css
 
 #buttons {
 	position: relative;
-	bottom: 70px;
+	bottom: 60px;
+}
+#addButton {
+	position: relative;
+	bottom: 5px;
+}
+#browseButton {
+	position: relative;
+	top: 5px;
 }
 #nav1 {
+	position: relative;
+	bottom: 10px;
+}
+#nav2 {
+	position: relative;
+	bottom: 10px;
+}
+#nav3 {
 	position: relative;
 	bottom: 10px;
 }
