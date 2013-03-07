@@ -27,33 +27,47 @@
 </head>
 <body>
 	<!-- Home Screen -->
-	<section data-role="page" id="home" data-add-back-btn="true" data-theme="a">
-		<header data-role= "header" id="logo" data-theme="e">
+	!-- Home Page -->
+	<section data-role="page" id="home" data-theme="a">
+
+		<header data-role="header" data-postion="fixed" data-theme="c">
 			<h1>Project Tracker</h1>
 		</header>
 
-		<section data-role="content">
-			<fieldset class="ui-grid-a">
+		<div data-role="content">
+			<div class="ui-grid-a">
 				<div class="ui-block-a"><img src="images/homescreen.png"/></div>
 				<div class="ui-block-b"><h2>Keep Track of All Your Projects, Tests, and Due Dates</h2></div>
-			</fieldset>
+			</div>
+			<div>
+				<ul data-role="listview" data-theme="e">
+					<li>
+						<a href="#addData">
+							<img src="images/addProject.png"/>
+							<h3>Add An Assignment</h3>
+							<p>Add a New Assignment or Test<p>
+						</a>
+					</li>
+					<li>
+						<a href="#viewData">
+							<img src="images/browseProjects.png"/>
+							<h3>Browse Saved Assignments</h3>
+							<p>Review Previously Saved Assignments or Tests<p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-
-
-			<div id="homeButtons">
-				
-				<a  href="#addData" data-role="button" data-theme="e">
-					<h3>Add A Project</h3>
-				</a>
-					
-				<a href="#viewData" data-role="button" data-theme="e">
-					<h3>Browse Saved Projects</h3>
-				</a>
-					
-			</div>	
-	
-		</section>
-
+		<footer data-role="footer" data-position="fixed" data-theme="c">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#testData" data-icon="testData">Test Data</a></li>
+				</ul>
+			</div>
+		</footer>
 
 	</section>
 	<!-- End Home Screen-->
