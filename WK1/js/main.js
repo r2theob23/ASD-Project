@@ -38,12 +38,14 @@ $('#testData').on('pageinit', function(){
 
 });
 
-
+var changePage = function(pageId){
+	$.mobile.changePage($('#'+ pageId),{transition:"fade"});
+};//End change page function
 
 $('#home').on('pageinit', function(){
 	//code needed for home page goes here
-});	
-		
+});
+
 $('#addData').on('pageinit', function(){
 
 		var myForm = $('#addAssignmentForm');
@@ -54,26 +56,8 @@ $('#addData').on('pageinit', function(){
 		var data = myForm.serializeArray();
 			storeData(data);
 		}
-	});
-function toggleControls (n) {
-		switch(n){
-			case "on":
-				$('addAssignmentForm').style.display = "none";
-				$('clearData').style.display = "inline";
-				$('disData').style.display = "inline";
-				$('addNew').style.display = "block";
-				break;
-			case "off":
-				$('addAssignmentForm').style.display = "block";
-				$('clearData').style.display = "inline";
-				$('disData').style.display = "inline";
-				$('addNew').style.display = "none";
-				$('items').style.display = "none";
-				break;
-			default:
-				return false;
-		}
-};
+	});//end validation
+
 	
 	var storeData = function(data){
 	if(!data){
@@ -93,72 +77,27 @@ function toggleControls (n) {
 	localStorage.setItem(id, JSON.stringify(item));
 	alert("Assignment Added!");
 	console.log(data);
-}; 
-
-//any other code needed for addItem page goes here
-	
+	changePage("viewData");
+	};//end storeData Function
 });
 
-//The functions below can go inside or outside the pageinit function for the page in which it is needed.
 
-var autofillData = function (){
-	for(var n in json){
-		var id = Math.floor(Math.random()*10000001);
-		localStorage.setItem(id, JSON.stringify(json[n]));
-	} 
-};
 
-var getData = function(){
-	toggleControls("on");
-	if(localStorage.length === 0){
-		alert("There is no data in Local Storage so example data was added.")
-		autoFillData();
-	}
-	var makeDiv = document.createElement('div');	
-	makeDiv.setAttribute("id", "items");
-	var makeList = document.createElement('ul');
-	makeDiv.appendChild(makeList);
-	document.body.appendChild(makeDiv);
-	$('items').style.display = "display";
-	for(var i=0, len=localStorage.length; i<len; i++){
-		var makeli = document.createElement('li');
-		var linksLi = document.createElement('li');
-		makeList.appendChild(makeli);
-		var key = localStorage.key(i);
-		var value = localStorage.getItem(key);
-		var obj = JSON.parse(value);
-		var makeSublist = document.createElement('ul');
-		makeli.appendChild(makeSublist);
-		getImage(obj.GorI[1], makeSublist);
-		for(var n in obj){
-			var makeSubli = document.createElement('li');
-			makeSublist.appendChild(makeSubli);
-			var optSubText = obj[n][0]+""+obj[n][1];
-			makeSubli.innerHTML = optSubText;
-			makeSublist.appendChild(linksLi);
-		}
-		makeItemLinks(localStorage.key(i), linksLi);
-	}
-}; 
 
-var	deleteItem = function (){
-	var ask = confirm("Are you sure you want to delete this assignment?")
-	if(ask){
-		localStorage.removeItem(this.key);
-		alert('Assignment Deleted!!!!')
-		window.location.reload();
-	}else{
-		alert("Assignment Was Not Deleted")
-	}		
-};
-					
-var clearLocal = function(){
-	if(localStorage.length === 0){
-		alert("There is no data to clear.")
-	}else{
-		localStorage.clear();
-		alert("All assignments have been deleted!")
-		window.location.reload();
-		return false;
-	}
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
