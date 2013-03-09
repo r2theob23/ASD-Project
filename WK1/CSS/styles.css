@@ -3,6 +3,10 @@ Robert Smith
 ASD 1303
 stlyes.css
 */
+
+* {
+	font-family: georgia;
+}
 .ui-grid-a {
 	position: relative;
 	top: 5px;
@@ -33,6 +37,10 @@ stlyes.css
 	bottom: 10px;
 }
 #nav3 {
+	position: relative;
+	bottom: 10px;
+}
+#nav4 {
 	position: relative;
 	bottom: 10px;
 }

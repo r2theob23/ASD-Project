@@ -63,7 +63,7 @@
 				<ul>
 					<li><a href="#home" data-icon="home" class="ui-btn-active ui-state-persist" id="nav1">Home</a></li>
 					<li><a href="#addData" data-icon="testData">Add</a></li>
-					<li><a href="#viewData" data-icon="search">Search</a></li>
+					<li><a href="#testData" data-icon="search">Test</a></li>
 				</ul>
 			</div>
 		</footer>
@@ -186,7 +186,7 @@
 				<ul>
 					<li><a href="#home" data-icon="home" id="nav2">Home</a></li>
 					<li><a href="#addData" data-icon="testData" class="ui-btn-active ui-state-persist">Add</a></li>
-					<li><a href="#viewData" data-icon="search">Search</a></li>
+					<li><a href="#testData" data-icon="search">Test</a></li>
 				</ul>
 			</div>
 		</footer>
@@ -204,11 +204,59 @@
 				<ul>
 					<li><a href="#home" data-icon="home" id="nav3">Home</a></li>
 					<li><a href="#addData" data-icon="testData">Add</a></li>
-					<li><a href="#viewData" data-icon="search" class="ui-btn-active ui-state-persist">Search</a></li>
+					<li><a href="#testData" data-icon="search" class="ui-btn-active ui-state-persist">Test</a></li>
 				</ul>
 			</div>
 		</footer>
 	</section>
+
+	<!-- Test Data -->
+	<div data-role="page" id="testData" data-add-back-btn="true" data-theme="a">
+
+		<div data-role="header" data-postion="fixed">
+			<h1>Test Data</h1>
+		</div>
+
+		<div data-role="content">
+			<div id="getdata" data-role="fieldcontain">
+					<div>
+					<p style="text-align: center;">Test Data</p>	
+
+						<div>
+							<a href="#" data-role="button" id="jsonData" data-theme="e">JSON Data</a>
+						</div>
+
+						<div>
+							<a href="#" data-role="button" id="csvData" data-theme="e">CSV Data</a>
+						</div>					
+
+					</div>				
+
+			</div>
+			<ul id="projectData" data-role="listview" data-theme="a"></ul>	
+				<center><div id="ajaxDiv"></div></center>
+
+				<div data-role="footer" data-position="fixed" data-id="profile">
+					<div data-role="navbar">
+						<ul>
+							<li><a href="#home" data-icon="home">Home</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>	
+
+		<div data-role="footer" data-position="fixed" data-theme="c">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" id="nav4">Home</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#testData" data-icon="testData" class="ui-btn-active">Test Data</a></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
 
 
 
@@ -222,10 +270,10 @@
         	src="js/libs/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript"
         	src="js/libs/jquery.mobile-1.3.0.min.js"></script>
-
 	<script type="text/javascript" 
 			src="js/libs/jquery.validate.min.js"></script>
-
+	<script type="text/javascript"
+			src="js/json.js"></script>
 	<script type="text/javascript"
         	src="js/main.js"></script>
 </body>

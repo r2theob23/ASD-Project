@@ -1,0 +1,58 @@
+{
+	"assignment1": [{
+		"GorI": ["Group or Individual: ", "Individual"],
+		"clname": ["Class Name: ", "VFW"],
+		"asname": ["Assignment Name: ", "Project 4"],
+		"email": ["Instructor E-mail: ", "Cgibson@me.com"],
+		"prior": ["Priority: ", "100"],
+		"selectMonth": ["Month: ", "April"],
+		"selectDay": 	["Day: ", "10"],
+		"selectYear": 	["Year: ", "2012"],
+		"notes": ["Notes: ", "Final Assignment for VFW."]
+	},
+	"assignment2": {
+		"GorI": ["Group or Individual: ", "Individual"],
+		"clname": ["Class Name: ", "MIU"],
+		"asname": ["Assignment Name: ", "Project 1"],
+		"email": ["Instructor E-mail: ", "robin@me.com"],
+		"prior": ["Priority: ", "100"],
+		"selectMonth": ["Month: ", "June"],
+		"selectDay": 	["Day: ", "26"],
+		"selectYear": 	["Year: ", "2012"],
+		"notes": ["Notes: ", "First Project for MIU."]
+	},
+	"assignment3": {
+		"GorI": ["Group or Individual: ", "Individual"],
+		"clname": ["Class Name: ", "MIU"],
+		"asname": ["Assignment Name: ", "Project 2"],
+		"email": ["Instructor E-mail: ", "robin@me.com"],
+		"prior": ["Priority: ", "75"],
+		"selectMonth": ["Month: ", "March"],
+		"selectDay": 	["Day: ", "13"],
+		"selectYear": 	["Year: ", "2012"],
+		"notes": ["Notes: ", "Second Project for MIU."]
+	},
+	"assignment4": [{
+		"GorI": ["Group or Individual: ", "Individual"],
+		"clname": ["Class Name: ", "MIU"],
+		"asname": ["Assignment Name: ", "Project 3"],
+		"email": ["Instructor E-mail: ", "robin@me.com"],
+		"prior": ["Priority: ", "80"],
+		"selectMonth": ["Month: ", "March"],
+		"selectDay": 	["Day: ", "04"],
+		"selectYear": 	["Year: ", "2012"],
+		"notes": ["Notes: ", "Third Project for MIU."]
+	},
+	"assignment5": {
+		"GorI": ["Group or Individual: ", "Individual"],
+		"clname": ["Class Name: ", "MIU"],
+		"asname": ["Assignment Name: ", "Project 4"],
+		"email": ["Instructor E-mail: ", "robin@me.com"],
+		"prior": ["Priority: ", "90"],
+		"selectMonth": ["Month: ", "April"],
+		"selectDay": 	["Day: ", "21"],
+		"selectYear": 	["Year: ", "2012"],
+		"notes": ["Notes: ", "Forth Project for MIU."]
+	}
+]}
+	
