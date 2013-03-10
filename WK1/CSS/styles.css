@@ -28,6 +28,10 @@ stlyes.css
 	position: relative;
 	top: 5px;
 }
+#ajaxButton {
+	position: relative;
+	top: 15px;
+}
 #nav1 {
 	position: relative;
 	bottom: 10px;
