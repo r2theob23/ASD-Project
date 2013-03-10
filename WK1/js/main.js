@@ -2,41 +2,6 @@
 //ASD 1303
 //main.js
 
-$('#testData').on('pageinit', function(){
-
-	//CSV
-	$('#csvData').on('click', function(){
-		$('#projectData').empty();
-		$('#ajaxDiv').empty();
-		$('<h2>').html("CSV Test Data").appendTo('#ajaxDiv');	
-			$.ajax({
-				url: 'xhr/csv.csv',
-				type: 'GET',
-				dataType: 'text',
-				success: function(csv){
-					var project = csv.split('\n');
-					for (var i=1, j=project.length; i<j; i++){
-						var red = project[i];
-						var blue = red.split(',');
-						$(''+'<div class="Data">'+
-										'<p>'+'Class Name : '+ blue[1]+'</p>'+
-										'<p>'+'Assignment Name : '+ blue[2]+'</p>'+
-										'<p>'+'Instructor Email : '+ blue[3]+'</p>'+
-										'<p>'+'Month : '+ blue[5]+'</p>'+
-										'<p>'+'Day : '+ blue[6]+'</p>'+
-										'<p>'+'Year : '+ blue[7]+'</p>'+
-										'<p>'+'Notes : '+ blue[8]+'</p>'+
-										'</div>'
-										).appendTo('#ajaxDiv');
-					}	
-					console.log("CSV works!");
-					console.log(csv);
-					}
-				});
-			return false;
-		});
-
-});
 
 var changePage = function(pageId){
 	$.mobile.changePage($('#'+ pageId),{transition:"fade"});
@@ -81,6 +46,10 @@ $('#addData').on('pageinit', function(){
 	};//end storeData Function
 });
 
+$("#viewData").on('pageinit', function(){
+
+});
+		
 
 
 
