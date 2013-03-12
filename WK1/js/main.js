@@ -9,7 +9,8 @@ var changePage = function(pageId){
 
 $('#home').on('pageinit', function(){
 	//code needed for home page goes here
-});
+
+});//End home page
 
 $('#addData').on('pageinit', function(){
 
@@ -43,8 +44,8 @@ $('#addData').on('pageinit', function(){
 	alert("Assignment Added!");
 	console.log(data);
 	changePage("viewData");
-	};//end storeData Function
-});
+	};
+});//end storeData Function
 
 function toggleControls (n) {
 		switch(n){
@@ -62,7 +63,7 @@ function toggleControls (n) {
 			default:
 				return false;
 		}
-};
+};//End toggle
 
 //display data function
 function getData(){
@@ -97,7 +98,7 @@ function getData(){
 		}
 		makeItemLinks(localStorage.key(i), linksLi);
 	}
-};
+};//End Display Data
 
 function autoFillData(){
 	//json.js info
@@ -105,7 +106,7 @@ function autoFillData(){
 		var id = Math.floor(Math.random()*10000001);
 		localStorage.setItem(id, JSON.stringify(json[n]));
 	}
-};
+};//End auto fill
 
 //Create the edit and delete links for stored data when displayed
 function makeItemLinks (key, linksLi) {
@@ -128,7 +129,7 @@ function makeItemLinks (key, linksLi) {
 	deleteLink.on('click', deleteItem);
 	deleteLink.text(deleteText);
 	linksLi.append(deleteLink);
-};
+};//End Create Links
 
 //Edit Item Function
 function editItem () {
@@ -153,7 +154,7 @@ function editItem () {
 	//Save the key value established in this function as a property of the editSubmit event
 	editSubmit.on('click', validate);
 	editSubmit.key = this.key;
-};
+};//End edit data
 
 //Delete Item Function
 function deleteItem(){
@@ -165,7 +166,7 @@ function deleteItem(){
 	}else{
 		alert("Assignment Was Not Deleted")
 	}
-};
+};//End delete data
 
 //clear data function
 function clearLocal(){
@@ -177,7 +178,7 @@ function clearLocal(){
 		window.location.reload();
 		return false;
 	}
-};
+};//End Clear data
 
 
 //Ajax
@@ -255,7 +256,7 @@ $('#testData').on('pageinit', function(){
 
 });
 
-
+//End
 
 
 
