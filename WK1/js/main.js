@@ -139,12 +139,13 @@ function editItem () {
 	//show the form
 	toggleControls('off');
 	//populate the form fields with current localStorage values.
-	$('clname').value = item.clname[1];
-	$('asname').value = item.asname[1];
-	$('dudate').value = item.dudate[1];
-	$('InsName').value = item.InsName[1];
-	$('email').value = item.email[1];
-	$('notes').value = item.notes[1];
+	$('#classTitle').value = item.classTittle[1];
+	$('#assignmentName').value = item.assignmentName[1];
+	$('#teacherEmail').value = item.teacherEmail[1];
+	$('#selectMonth').value = item.selectMonth[1];
+	$('#selectDay').value = item.selectDay[1];
+	$('#selectYear').value = item.selectYear[1];
+	$('#notes').value = item.notes[1];
 
 	//Remove the intial listener from the input 'save' button
 	save.remove('click', storeData);
