@@ -66,7 +66,7 @@ function toggleControls (n) {
 };//End toggle
 
 //display data function
-function getData(){
+$('#disData').on(function getData(){
 	//toggleControls("on");
 	if(localStorage.length === 0){
 		alert("There is no data in Local Storage so example data was added.")
@@ -80,7 +80,6 @@ function getData(){
 	$('#items').show();
 		for(var i=0, len=localStorage.length; i<len; i++){
 			var makeli = $('<li>');
-			var linksLi = $('<li>');
 			makeList.append(makeli);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -92,13 +91,13 @@ function getData(){
 			for(var n in obj){
 				var makeSubli = $('<li>');
 				makeSublist.append(makeSubli);
-				var optSubText = obj[n][0]+""+obj[n][1];
+				var optSubText = obj[n][0]+" "+obj[n][1];
 				makeSubli.text(optSubText);
 				makeSublist.append(linksLi);
 		}
 		makeItemLinks(localStorage.key(i), linksLi);
 	}
-};//End Display Data
+});//End Display Data
 
 function autoFillData(){
 	//json.js info
