@@ -187,7 +187,9 @@
 					<input type="reset" value="Clear All" data-theme="e"/>
 		
 					<input type="submit" value="Add Assignment" data-theme="e"/>
-				
+		</div>
+			</form>	
+
 		<footer data-role="footer" data-position="fixed" data-theme="c">
 			<div data-role="navbar">
 				<ul>
@@ -205,6 +207,16 @@
 			<h1>Assignments</h1>
 		</header>
 
+		<div data-role="content" id="data">
+
+			<div>
+				<a href="#" id="clearData">Clear Stored Data</a>
+				<a href="#" id="disData">Display Data</a>
+				<a href="additem.html" id="addNew" style="display:none;">Add New Assignment</a>
+			</div>
+
+		</div>
+
 
 		<footer data-role="footer" data-position="fixed" data-theme="c">
 			<div data-role="navbar">
@@ -220,7 +232,7 @@
 	<!-- Test Data -->
 	<div data-role="page" id="testData" data-add-back-btn="true" data-theme="a">
 
-		<div data-role="header" data-postion="fixed">
+		<div data-role="header" data-postion="fixed" data-theme="c">
 			<h1>Ajax Data</h1>
 		</div>
 
@@ -230,7 +242,7 @@
 					<p style="text-align: center;">Test Data</p>	
 
 						<div>
-							<a href="#" data-role="button" id="jsonData" data-theme="e">JSON Data</a>
+							<a href="#" data-role="button" id="xmlData" data-theme="e">XML Data</a>
 						</div>
 
 						<div>
