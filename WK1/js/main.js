@@ -77,7 +77,7 @@ function getData(){
 	var makeList = $('<ul>');
 	makeDiv.append(makeList);
 	$('#data').append(makeDiv);
-	$('items').show();
+	$('#items').show();
 		for(var i=0, len=localStorage.length; i<len; i++){
 			var makeli = $('<li>');
 			var linksLi = $('<li>');
