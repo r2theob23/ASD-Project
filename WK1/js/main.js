@@ -47,27 +47,8 @@ $('#addData').on('pageinit', function(){
 	};
 });//end storeData Function
 
-function toggleControls (n) {
-		switch(n){
-			case "on":
-				$('clearData').show();
-				$('disData').show();
-				$('addNew').show();
-				break;
-			case "off":
-				$('clearData').show();
-				$('disData').show();
-				$('addNew').hide();
-				$('items').hide();
-				break;
-			default:
-				return false;
-		}
-};//End toggle
-
 //display data function
 $('#disData').on("click", function getData(){
-	//toggleControls("on");
 	if(localStorage.length === 0){
 		alert("There is no data in Local Storage so example data was added.")
 		autoFillData();
@@ -80,6 +61,7 @@ $('#disData').on("click", function getData(){
 	$('#items').show();
 		for(var i=0, len=localStorage.length; i<len; i++){
 			var makeli = $('<li>');
+			var linksLi = $('<li>');
 			makeList.append(makeli);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -127,7 +109,7 @@ function makeItemLinks (key, linksLi) {
 	var deleteText = "Delete Assignment";
 	deleteLink.on('click', deleteItem);
 	deleteLink.text(deleteText);
-	linksLi.append(deleteLink);
+	linksLi.append(deleteItem);
 };//End Create Links
 
 //Edit Item Function
@@ -136,9 +118,8 @@ function editItem () {
 	var value =localStorage.getItem(this.key);
 	var item = JSON.parse(value);
 	//show the form
-	toggleControls('off');
 	//populate the form fields with current localStorage values.
-	$('#classTitle').value = item.classTittle[1];
+	$('#classTitle').value = item.classTitle[1];
 	$('#assignmentName').value = item.assignmentName[1];
 	$('#teacherEmail').value = item.teacherEmail[1];
 	$('#selectMonth').value = item.selectMonth[1];
