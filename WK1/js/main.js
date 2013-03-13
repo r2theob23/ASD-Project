@@ -89,6 +89,17 @@ function autoFillData(){
 	}
 };//End auto fill
 
+$('#clearData').on("click", function clearLocal(){
+	if(localStorage.length === 0){
+		alert("There is no data to clear.")
+	}else{
+		localStorage.clear();
+		alert("All assignments have been deleted!")
+		window.location.reload();
+		return false;
+	}
+});//End Clear data
+
 //Create the edit and delete links for stored data when displayed
 function makeItemLinks (key, linksLi) {
 	//add edit single item link
@@ -96,7 +107,7 @@ function makeItemLinks (key, linksLi) {
 	editLink.href = "#";
 	editLink.key = key;
 	var editText = "Edit Assignment";
-	editLink.on('click', editItem);
+	editLink.on('click', editItem());
 	editLink.text(editText);
 	linksLi.append(editLink);
 	//add line break
@@ -107,9 +118,9 @@ function makeItemLinks (key, linksLi) {
 	deleteLink.href = '#';
 	deleteLink.key = key;
 	var deleteText = "Delete Assignment";
-	deleteLink.on('click', deleteItem);
+	deleteLink.on('click', deleteItem());
 	deleteLink.text(deleteText);
-	linksLi.append(deleteItem);
+	linksLi.append(deleteLink);
 };//End Create Links
 
 //Edit Item Function
@@ -119,13 +130,13 @@ function editItem () {
 	var item = JSON.parse(value);
 	//show the form
 	//populate the form fields with current localStorage values.
-	$('#classTitle').value = item.classTitle[1];
-	$('#assignmentName').value = item.assignmentName[1];
-	$('#teacherEmail').value = item.teacherEmail[1];
-	$('#selectMonth').value = item.selectMonth[1];
-	$('#selectDay').value = item.selectDay[1];
-	$('#selectYear').value = item.selectYear[1];
-	$('#notes').value = item.notes[1];
+	$('classTitle').value = item.classTitle[1];
+	$('assignmentName').value = item.assignmentName[1];
+	$('teacherEmail').value = item.teacherEmail[1];
+	$('selectMonth').value = item.selectMonth[1];
+	$('selectDay').value = item.selectDay[1];
+	$('selectYear').value = item.selectYear[1];
+	$('notes').value = item.notes[1];
 
 	//Remove the intial listener from the input 'save' button
 	save.remove('click', storeData);
@@ -137,7 +148,7 @@ function editItem () {
 	editSubmit.key = this.key;
 };//End edit data
 
-//Delete Item Function
+//delete single item
 function deleteItem(){
 	var ask = confirm("Are you sure you want to delete this assignment?")
 	if(ask){
@@ -147,19 +158,7 @@ function deleteItem(){
 	}else{
 		alert("Assignment Was Not Deleted")
 	}
-};//End delete data
-
-//clear data function
-function clearLocal(){
-	if(localStorage.length === 0){
-		alert("There is no data to clear.")
-	}else{
-		localStorage.clear();
-		alert("All assignments have been deleted!")
-		window.location.reload();
-		return false;
-	}
-};//End Clear data
+};//End delete single item
 
 
 //Ajax
