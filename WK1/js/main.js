@@ -66,7 +66,7 @@ function toggleControls (n) {
 };//End toggle
 
 //display data function
-$('#disData').on(function getData(){
+$('#disData').on("click", function getData(){
 	//toggleControls("on");
 	if(localStorage.length === 0){
 		alert("There is no data in Local Storage so example data was added.")
