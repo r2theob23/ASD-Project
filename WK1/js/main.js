@@ -63,12 +63,11 @@ $('#disData').on("click", function getData(){
 			var makeSublist = $('<ul>');
 			$('#items').append(makeSublist);
 
-
 			for(var n in obj){
-				var makeSubli = $('<li>');
-				makeSublist.append(makeSubli);
-				var optSubText = obj[n][0]+" "+obj[n][1];
-				makeSubli.html(optSubText);
+			var makeSubli = $('<li>');
+			makeSublist.append(makeSubli);
+			var optSubText = obj[n][0]+" "+obj[n][1];
+			makeSubli.html(optSubText);
 		}
 		
 	}
