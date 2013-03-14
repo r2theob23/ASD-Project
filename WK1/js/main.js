@@ -53,32 +53,26 @@ $('#disData').on("click", function getData(){
 		alert("There is no data in Local Storage so example data was added.")
 		autoFillData();
 	}
-	var makeDiv = $('<div>');	
-	makeDiv.attr("id", "items");
-	var makeList = $('<ul>');
-	makeDiv.append(makeList);
-	$('#data').append(makeDiv);
-	$('#items').show();
+	
+	$('#data').html('<div id="items"></div>');
 		for(var i=0, len=localStorage.length; i<len; i++){
-			var makeli = $('<li>');
-			var linksLi = $('<li>');
-			makeList.append(makeli);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
-			
+
 			var obj = JSON.parse(value);
 			var makeSublist = $('<ul>');
-			makeli.append(makeSublist);
-			
+			$('#items').append(makeSublist);
+
+
 			for(var n in obj){
 				var makeSubli = $('<li>');
 				makeSublist.append(makeSubli);
 				var optSubText = obj[n][0]+" "+obj[n][1];
-				makeSubli.text(optSubText);
-				makeSublist.append(linksLi);
+				makeSubli.html(optSubText);
 		}
-		makeItemLinks(localStorage.key(i), linksLi);
+		
 	}
+	
 });//End Display Data
 
 function autoFillData(){
@@ -237,7 +231,21 @@ $('#testData').on('pageinit', function(){
 });
 
 //End
+//var makeDiv = $('<div>');	
+//	makeDiv.attr("id", "items");
+//	var makeList = $('<ul>');
+//	makeDiv.append(makeList);
+//	$('#data').append(makeDiv);
+//	$('#items').show();
 
+
+			//$('#items').append('<li>' + "Class Name: " + optSubText + '</li>');
+			//$('#items').append('<li>' + "Assignment Name: " + optSubText + '</li>');
+			//$('#items').append('<li>' + "Instructor E-mail: " + optSubText + '</li>');
+			//$('#items').append('<li>' + "Month: " + optSubText + '</li>');
+			//$('#items').append('<li>' + "Day: " + optSubText + '</li>');
+			//$('#items').append('<li>' + "Year: " + optSubText + '</li>');
+			//$('#items').append('<li>' + "Notes: " + optSubText + '</li>');
 
 
 
