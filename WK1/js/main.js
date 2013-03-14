@@ -2,6 +2,25 @@
 //ASD 1303
 //main.js
 
+function toggleControls(n) {
+    switch (n) {
+    case "on":
+        $('#addAssignmentForm').css('display', 'none');
+        $('#clearData').css('display', 'inline');
+        $('#disData').css('display', 'inline');
+        $('#addNew').css('display', 'block');
+        break;
+    case "off":
+      	$('#addAssignmentForm').css('display', 'block');
+        $('#clearData').css('display', 'inline');
+        $('#disData').css('display', 'inline');
+        $('#addNew').css('display', 'none');
+        $('#items').css('display', 'none');
+        break;
+    default:
+        return false;
+    }
+};	
 
 var changePage = function(pageId){
 	$.mobile.changePage($('#'+ pageId),{transition:"fade"});
@@ -24,8 +43,10 @@ $('#addData').on('pageinit', function(){
 		}
 	});//end validation
 
-	
-	var storeData = function(data){
+
+
+//Start storeData function	
+var storeData = function(data){
 	if(!data){
 		var id = Math.floor(Math.random()*10000001);
 	}else{
@@ -49,6 +70,7 @@ $('#addData').on('pageinit', function(){
 
 //display data function
 $('#disData').on("click", function getData(){
+	toggleControls("on");
 	if(localStorage.length === 0){
 		alert("There is no data in Local Storage so example data was added.")
 		autoFillData();
@@ -71,7 +93,11 @@ $('#disData').on("click", function getData(){
 		}
 		
 	}
-	
+
+	$('<p>').html($('<a>').attr({'href': '#','onclick': 'editItem(' + key + ');'}).html('Edit Assignment')).appendTo("#items");
+	$('<p>').html($('<a>').attr({'href': '#','onclick': 'deleteItem(' + key + ');'}).html('Delete Assignment')).appendTo("#items");		
+		
+
 });//End Display Data
 
 function autoFillData(){
@@ -92,29 +118,6 @@ $('#clearData').on("click", function clearLocal(){
 		return false;
 	}
 });//End Clear data
-
-//Create the edit and delete links for stored data when displayed
-function makeItemLinks (key, linksLi) {
-	//add edit single item link
-	var editLink = $('<a>');
-	editLink.href = "#";
-	editLink.key = key;
-	var editText = "Edit Assignment";
-	editLink.on('click', editItem());
-	editLink.text(editText);
-	linksLi.append(editLink);
-	//add line break
-	var breakTag = $('<br>');
-	linksLi.append(breakTag);
-	//add delete single item link
-	var deleteLink = ('<a>');
-	deleteLink.href = '#';
-	deleteLink.key = key;
-	var deleteText = "Delete Assignment";
-	deleteLink.on('click', deleteItem());
-	deleteLink.text(deleteText);
-	linksLi.append(deleteLink);
-};//End Create Links
 
 //Edit Item Function
 function editItem () {
