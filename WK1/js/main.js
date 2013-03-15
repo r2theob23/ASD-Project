@@ -109,6 +109,7 @@ $('#clearData').on("click", function clearLocal(){
 	}else{
 		localStorage.clear();
 		alert("All assignments have been deleted!")
+		window.location.reload();
 		changePage('home');
 		return false;
 	}
@@ -183,6 +184,7 @@ function deleteItem(){
 		localStorage.removeItem(this.key);
 		alert('Assignment Deleted!!!!')
 		window.location.reload();
+		changePage('home');
 	}else{
 		alert("Assignment Was Not Deleted")
 	}
