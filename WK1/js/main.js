@@ -109,7 +109,7 @@ $('#clearData').on("click", function clearLocal(){
 	}else{
 		localStorage.clear();
 		alert("All assignments have been deleted!")
-		window.location.reload();
+		changePage('home');
 		return false;
 	}
 });//End Clear data
@@ -127,9 +127,10 @@ var makeItemLinks = function (key, makeSubli) {
             key: myKey,
             class: "editEntry"
         });
-        editLink.html(editLinkText);		              
+        editLink.html(editLinkText);
+        makeSubli.append(breakTag);	              
  		makeSubli.append(editLink);
-        makeSubli.append(breakTag);		                   
+ 		makeSubli.append(breakTag);                   
          $('.editEntry', makeSubli).on('click', function(){
              editForm(myKey);
          }); 
@@ -141,7 +142,7 @@ var makeItemLinks = function (key, makeSubli) {
              key: myKey,
              class: "deleteEntry"
         });
- 		deleteLink.html(deleteText);                        
+ 		deleteLink.html(deleteText);                         
  		makeSubli.append(deleteLink);
         $('.deleteEntry', makeSubli).on('click', function(){
             deleteItem(myKey);
@@ -214,7 +215,7 @@ $('#testData').on('pageinit', function(){
 						var year 	  =	$(this).find('year').text();
 						var notes 	  =	$(this).find('notes').text();
 						$('<div class="userInput" id="user_'+ id +'"></div>')
-							.html(+'<p>'+"Class Name: "+ clname +'</p>'+
+							.html('<p>'+"Class Name: "+ clname +'</p>'+
 								  '<p>'+"Assignment Name: "+ asname +'</p>'+
 								  '<p>'+"Instructor Email: "+ email +'</p>'+
 								  '<p>'+"Day: "+ day +'</p>'+
