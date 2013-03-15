@@ -6,6 +6,26 @@ var changePage = function(pageId){
 	$.mobile.changePage($('#'+ pageId),{transition:"fade"});
 };//End change page function
 
+function toggleControls (n) {
+		switch(n){
+			case "on":
+				$('#addAssignmentForm').show();
+				$('#clearData').show();
+				$('#disData').show();
+				$('#addNew').show();
+				break;
+			case "off":
+				$('#addAssignmentForm').hide();
+				$('#clearData').show();
+				$('#disData').show();
+				$('#addNew').hide();
+				$('#items').hide();
+				break;
+			default:
+				return false;
+		}
+};
+
 $('#home').on('pageinit', function(){
 	//code needed for home page goes here
 
@@ -23,7 +43,7 @@ $('#addData').on('pageinit', function(){
 		}
 	});//end validation
 
-
+});
 
 //Start storeData function	
 var storeData = function(data, key){
@@ -45,8 +65,7 @@ var storeData = function(data, key){
 	alert("Assignment Added!");
 	console.log(data);
 	changePage("viewData");
-	};
-});//end storeData Function
+};//End Store Data Function
 
 //display data function
 $('#disData').on("click", function getData(){
@@ -71,12 +90,8 @@ $('#disData').on("click", function getData(){
 			var optSubText = obj[n][0]+" "+obj[n][1];
 			makeSubli.html(optSubText);
 		}
-		
-	}
-
-	$('<p>').html($('<a>').attr({'href': '#','onclick': 'editItem(' + key + ');'}).html('Edit Assignment')).appendTo("#items");
-	$('<p>').html($('<a>').attr({'href': '#', 'onclick': 'deleteItem(' + key + ');'}).html('Delete Assignment')).appendTo("#items");		
-		
+		 makeItemLinks(localStorage.key(i), makeSubli);
+	}		
 
 });//End Display Data
 
@@ -99,30 +114,66 @@ $('#clearData').on("click", function clearLocal(){
 	}
 });//End Clear data
 
-//Edit Item Function
-function editItem () {
-	//Grab the data from our item from local storage
-	var value =localStorage.getItem(this.key);
-	var item = JSON.parse(value);
-	//show the form
-	toggleControls('off');
-	//populate the form fields with current localStorage values.
-	$('clname').value = item.clname[1];
-	$('asname').value = item.asname[1];
-	$('dudate').value = item.dudate[1];
-	$('InsName').value = item.InsName[1];
-	$('email').value = item.email[1];
-	$('notes').value = item.notes[1];
+//Edit and Delete single assignment links
+var makeItemLinks = function (key, makeSubli) {
+	var myKey = key;
+	//edit item link
+	var editLink = $('<a></a>');
+	var breakTag = $("</br>");
+        var editLinkText = "Edit Assignment";
+ 	    //Set the attributes for our link
+        editLink.attr({
+            href: "#addNew",
+            key: myKey,
+            class: "editEntry"
+        });
+        editLink.html(editLinkText);		              
+ 		makeSubli.append(editLink);
+        makeSubli.append(breakTag);		                   
+         $('.editEntry', makeSubli).on('click', function(){
+             editForm(myKey);
+         }); 
+           //delete item link
+ 	var deleteLink = $("<a></a>");                      
+    var deleteText = "Delete Assignment";             
+ 		deleteLink.attr({                                   
+             href: "#",
+             key: myKey,
+             class: "deleteEntry"
+        });
+ 		deleteLink.html(deleteText);                        
+ 		makeSubli.append(deleteLink);
+        $('.deleteEntry', makeSubli).on('click', function(){
+            deleteItem(myKey);
+         });
 
-	//Remove the intial listener from the input 'save' button
-	save.removeEventListener('click', storeData);
-	//change submit button to edit button
-	$('submit').value = "Edit Assignment";
-	var editSubmit = $('submit');
-	//SAve the key value established in this function as a property of the editSubmit event
-	editSubmit.addEventListener('click', validate);
-	editSubmit.key = this.key;
-};
+ 	};
+ var submitInfo = $('#save')
+//Edit Item Function
+var editForm = function(myKey){
+
+        toggleControls("on");                                  
+       
+ 		var value = localStorage.getItem(myKey);            //grab item from local store to populate fields with what's in memory
+ 		var item = JSON.parse(value);                       //Convert from string to object
+                             
+ 		$('#classTitle').val(item.classTitle[1]);
+ 		$('#assignmentName').val(item.assignmentName[1]);
+ 		$('#teacherEmail').val(item.teacherEmail[1]);
+ 		$('#selectMonth').val(item.selectMonth[1]);
+ 		$('#selectDay').val(item.selectDay[1]);
+ 		$('#selectYear').val(item.selectYear[1]);                 //each of these retrieves values for each input
+ 		$('#notes').val(item.notes[1]);
+
+ 		$('#send').text = "Save";                           //change the button to read "save"
+ 		
+ 		var editSubmit = $('#send');
+ 		editSubmit.on("click", function () {
+             $('#addAssignmentForm').val();
+             storeData();
+         });
+ 		editSubmit.key = this.key;
+ 	};//End Edit single item
 
 //delete single item
 function deleteItem(){
@@ -211,25 +262,6 @@ $('#testData').on('pageinit', function(){
 		});
 
 });
-
-//End
-//var makeDiv = $('<div>');	
-//	makeDiv.attr("id", "items");
-//	var makeList = $('<ul>');
-//	makeDiv.append(makeList);
-//	$('#data').append(makeDiv);
-//	$('#items').show();
-
-
-			//$('#items').append('<li>' + "Class Name: " + optSubText + '</li>');
-			//$('#items').append('<li>' + "Assignment Name: " + optSubText + '</li>');
-			//$('#items').append('<li>' + "Instructor E-mail: " + optSubText + '</li>');
-			//$('#items').append('<li>' + "Month: " + optSubText + '</li>');
-			//$('#items').append('<li>' + "Day: " + optSubText + '</li>');
-			//$('#items').append('<li>' + "Year: " + optSubText + '</li>');
-			//$('#items').append('<li>' + "Notes: " + optSubText + '</li>');
-
-
 
 
 
