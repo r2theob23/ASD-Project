@@ -2,26 +2,6 @@
 //ASD 1303
 //main.js
 
-function toggleControls(n) {
-    switch (n) {
-    case "on":
-        $('#addAssignmentForm').css('display', 'none');
-        $('#clearData').css('display', 'inline');
-        $('#disData').css('display', 'inline');
-        $('#addNew').css('display', 'block');
-        break;
-    case "off":
-      	$('#addAssignmentForm').css('display', 'block');
-        $('#clearData').css('display', 'inline');
-        $('#disData').css('display', 'inline');
-        $('#addNew').css('display', 'none');
-        $('#items').css('display', 'none');
-        break;
-    default:
-        return false;
-    }
-};	
-
 var changePage = function(pageId){
 	$.mobile.changePage($('#'+ pageId),{transition:"fade"});
 };//End change page function
@@ -46,11 +26,11 @@ $('#addData').on('pageinit', function(){
 
 
 //Start storeData function	
-var storeData = function(data){
+var storeData = function(data, key){
 	if(!data){
 		var id = Math.floor(Math.random()*10000001);
 	}else{
-		id = data;
+		id = key;
 	}
 		var item 					= {};
 		item.classTitle 			= ["Class Name: ", $('#classTitle').val()];
@@ -70,7 +50,7 @@ var storeData = function(data){
 
 //display data function
 $('#disData').on("click", function getData(){
-	toggleControls("on");
+	
 	if(localStorage.length === 0){
 		alert("There is no data in Local Storage so example data was added.")
 		autoFillData();
@@ -95,7 +75,7 @@ $('#disData').on("click", function getData(){
 	}
 
 	$('<p>').html($('<a>').attr({'href': '#','onclick': 'editItem(' + key + ');'}).html('Edit Assignment')).appendTo("#items");
-	$('<p>').html($('<a>').attr({'href': '#','onclick': 'deleteItem(' + key + ');'}).html('Delete Assignment')).appendTo("#items");		
+	$('<p>').html($('<a>').attr({'href': '#', 'onclick': 'deleteItem(' + key + ');'}).html('Delete Assignment')).appendTo("#items");		
 		
 
 });//End Display Data
@@ -125,24 +105,24 @@ function editItem () {
 	var value =localStorage.getItem(this.key);
 	var item = JSON.parse(value);
 	//show the form
+	toggleControls('off');
 	//populate the form fields with current localStorage values.
-	$('classTitle').value = item.classTitle[1];
-	$('assignmentName').value = item.assignmentName[1];
-	$('teacherEmail').value = item.teacherEmail[1];
-	$('selectMonth').value = item.selectMonth[1];
-	$('selectDay').value = item.selectDay[1];
-	$('selectYear').value = item.selectYear[1];
+	$('clname').value = item.clname[1];
+	$('asname').value = item.asname[1];
+	$('dudate').value = item.dudate[1];
+	$('InsName').value = item.InsName[1];
+	$('email').value = item.email[1];
 	$('notes').value = item.notes[1];
 
 	//Remove the intial listener from the input 'save' button
-	save.remove('click', storeData);
+	save.removeEventListener('click', storeData);
 	//change submit button to edit button
 	$('submit').value = "Edit Assignment";
 	var editSubmit = $('submit');
-	//Save the key value established in this function as a property of the editSubmit event
-	editSubmit.on('click', validate);
+	//SAve the key value established in this function as a property of the editSubmit event
+	editSubmit.addEventListener('click', validate);
 	editSubmit.key = this.key;
-};//End edit data
+};
 
 //delete single item
 function deleteItem(){
