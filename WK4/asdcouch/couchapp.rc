@@ -1,0 +1,11 @@
+{
+  "env": {
+    "local": {
+      "db": "http://127.0.0.1:5984/asdproject"
+    },
+    "cloudant": {
+      "db": "https://r2theob23:dawizkidplayer23@r2theob23.cloudant.com/asdproject"
+    }
+  }
+}
+
