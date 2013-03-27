@@ -1,6 +1,6 @@
-$('#testData').on('pageinit', function(){
+$("#testData").on('pageinit', function(){
 	$.ajax({
-		"url": "_view/class",
+		"url": "_view/classes",
 		"dataType": "json",
 		"success": function(data){
 			$.each(data.rows, function(index, project){
