@@ -191,80 +191,73 @@ function deleteItem(){
 };//End delete single item
 
 
-//Ajax
 
-$('#testData').on('pageinit', function(){
 
-//XML
-	$('#xmlData').on('click', function(){
-		$('#projectData').empty();
-		$('#ajaxDiv').empty();
-		$('<h2>').html("XML Test Data").appendTo('#ajaxDiv');		
-			$.ajax({
-				url: 'xhr/xml.xml',
-				type: 'GET',
-				dataType: 'xml',
-				success: function(xml){
-					$(xml).find('user').each(function(){
-						var id = $(this).attr('id');
-						var GorI =	$(this).find('GorI').text();
-						var clname 	  =	$(this).find('clname').text();
-						var asname     =	$(this).find('asname').text();
-						var email   	  =	$(this).find('email').text();
-						var prior	  =	$(this).find('prior').text();
-						var month  	  =	$(this).find('month').text();
-						var day	  =	$(this).find('day').text();
-						var year 	  =	$(this).find('year').text();
-						var notes 	  =	$(this).find('notes').text();
-						$('<div class="userInput" id="user_'+ id +'"></div>')
-							.html('<p>'+"Class Name: "+ clname +'</p>'+
-								  '<p>'+"Assignment Name: "+ asname +'</p>'+
-								  '<p>'+"Instructor Email: "+ email +'</p>'+
-								  '<p>'+"Day: "+ day +'</p>'+
-								  '<p>'+"Month "+ month +'</p>'+
-								  '<p>'+"Year : "+ year +'</p>'+
-								  '<p>'+"Notes "+ notes +'</p>'
-								 ).appendTo('#ajaxDiv');	
-					});
-					console.log("XML works");
-					console.log(xml);
-					}
-				});
-			return false;
-	});		
-	//CSV
-	$('#csvData').on('click', function(){
-		$('#projectData').empty();
-		$('#ajaxDiv').empty();
-		$('<h2>').html("CSV Test Data").appendTo('#ajaxDiv');	
-			$.ajax({
-				url: 'xhr/csv.csv',
-				type: 'GET',
-				dataType: 'text',
-				success: function(csv){
-					var project = csv.split('\n');
-					for (var i=1, j=project.length; i<j; i++){
-						var red = project[i];
-						var blue = red.split(',');
-						$(''+'<div class="Data">'+
-										'<p>'+'Class Name : '+ blue[0]+'</p>'+
-										'<p>'+'Assignment Name : '+ blue[1]+'</p>'+
-										'<p>'+'Instructor Email : '+ blue[2]+'</p>'+
-										'<p>'+'Month : '+ blue[3]+'</p>'+
-										'<p>'+'Day : '+ blue[4]+'</p>'+
-										'<p>'+'Year : '+ blue[5]+'</p>'+
-										'<p>'+'Notes : '+ blue[6]+'</p>'+
-										'</div>'
-										).appendTo('#ajaxDiv');
-					}	
-					console.log("CSV works!");
-					console.log(csv);
-					}
-				});
-			return false;
-		});
+//***********************************************
 
+$("#viewData").on('pageinit', function () {
+
+        var name = "r2theob23";
+        var pass = "dawizkidplayer23";
+        function doLogin(name, pass) {
+            $.couch.login({name:name, password:pass});
+           
+            var myForm = $('#addAssignmentForm');
+            myForm.validate({
+            invalidHandler: function(form, validator) {
+            },
+            submitHandler: function() {
+        var data = myForm.serializeArray();
+            saveAssignment(data);
+        }
+    });//end validation
+    
+    var saveAssignment = function(key, rev){
+                console.log('Second Data:' + key);
+
+                if(!key){ 
+
+                    var id = Math.floor(Math.random()*1001);
+                }else{
+                    var id = key;
+                }
+
+                var item = {
+                    '_rev' : rev,
+                    '_id' : id,
+                    'classTitle' : ["Class Name: " , $("#classTitle").val()],
+                    'assignmentName' : ["Assignment Name: " , $("#assignmentName").val()],
+                    'teacherEmail' : ["Instructor E-mail: " , $("#teacherEmail").val()],
+                    'selectMonth' : ["Month: " , $("#selectMonth").val()],
+                    'selectDay' : ["Day: " , $("#selectDay").val()],
+                    'selectYear' : ["Year: " , $('#selectYear').val()],
+                    'notes'     :  ["Notes: " , $('#notes').val()]
+                    
+                };
+
+                 console.log("FINAL ITEM", item);
+                 $.couch.db('project5').saveDoc(item, {
+                     success: function(data){
+                         console.log("success", data);
+                         alert("Submission Saved");
+
+                     },
+                     error: function(data) {
+                         console.log("error", data);
+                     }
+                 });
+
+
+                //alert("Position Saved!");
+                //window.location.reload();
+            }; 
+        }
 });
+    
 
 
+
+
+
+	
 
