@@ -2,6 +2,7 @@
 //ASD 1303
 //main.js
 
+
 var changePage = function(pageId){
 	$.mobile.changePage($('#'+ pageId),{transition:"fade"});
 };//End change page function
@@ -150,7 +151,7 @@ var makeItemLinks = function (key, makeSubli) {
          });
 
  	};
- var submitInfo = $('#save')
+ var submitInfo = $('#save');
 //Edit Item Function
 var editForm = function(myKey){
 
@@ -179,14 +180,14 @@ var editForm = function(myKey){
 
 //delete single item
 function deleteItem(){
-	var ask = confirm("Are you sure you want to delete this assignment?")
+	var ask = confirm("Are you sure you want to delete this assignment?");
 	if(ask){
 		localStorage.removeItem(this.key);
 		alert('Assignment Deleted!!!!')
 		window.location.reload();
 		changePage('home');
 	}else{
-		alert("Assignment Was Not Deleted")
+		alert("Assignment Was Not Deleted");
 	}
 };//End delete single item
 
@@ -213,7 +214,6 @@ $("#viewData").on('pageinit', function () {
     });//end validation
     
     var saveAssignment = function(key, rev){
-                console.log('Second Data:' + key);
 
                 if(!key){ 
 
@@ -234,27 +234,19 @@ $("#viewData").on('pageinit', function () {
                     'notes'     :  ["Notes: " , $('#notes').val()]
                     
                 };
-
-                 console.log("FINAL ITEM", item);
-                 $.couch.db('project5').saveDoc(item, {
+                
+                 $.couch.db('asdproject').saveDoc(item, {
                      success: function(data){
-                         console.log("success", data);
-                         alert("Submission Saved");
+                         alert("Assignment Saved");
 
                      },
                      error: function(data) {
                          console.log("error", data);
                      }
                  });
-
-
-                //alert("Position Saved!");
-                //window.location.reload();
             }; 
         }
 });
-    
-
 
 
 
