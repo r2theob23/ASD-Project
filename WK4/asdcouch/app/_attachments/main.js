@@ -196,7 +196,8 @@ function deleteItem(){
 
 //***********************************************
 
-$("#viewData").on('pageinit', function () {
+$("document").on('pageinit', '#viewData', function () {
+		console.log('couch is working');
 
         var name = "r2theob23";
         var pass = "dawizkidplayer23";
